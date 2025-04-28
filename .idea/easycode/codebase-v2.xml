@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/wms/src/main/java/com/wms/common/CodeGenerator.java;F:/Java/JavaCode/inventory/wms/src/main/java/com/wms/wms/controller/UserController.java;F:/Java/JavaCode/inventory/wms/src/main/java/com/wms/wms/entity/User.java;F:/Java/JavaCode/inventory/wms/src/main/java/com/wms/wms/mapper/UserMapper.java;F:/Java/JavaCode/inventory/wms/src/main/java/com/wms/wms/service/impl/UserServiceImpl.java;F:/Java/JavaCode/inventory/wms/src/main/java/com/wms/wms/service/IUserService.java;F:/Java/JavaCode/inventory/wms/src/main/java/com/wms/WmsApplication.java;F:/Java/JavaCode/inventory/wms/src/main/resources/mapper/wms/UserMapper.xml;F:/Java/JavaCode/inventory/wms/src/test/java/com/wms/WmsApplicationTests.java;F:/Java/JavaCode/inventory/wms/pom.xml" />
+  </component>
+</project>
