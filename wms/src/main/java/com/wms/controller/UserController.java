@@ -7,7 +7,9 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wms.common.QueryPageParam;
 import com.wms.common.Result;
+import com.wms.entity.Menu;
 import com.wms.entity.User;
+import com.wms.service.MenuService;
 import com.wms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +32,28 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private MenuService menuService;
+
+    // 登录
+    @PostMapping("/login")
+    public Result login(@RequestBody User user) {
+        List<User> list = userService.lambdaQuery()
+                .eq(User::getNo, user.getNo())
+                .eq(User::getPassword, user.getPassword())
+                .list();
+
+        if (list.isEmpty()) {
+            return Result.fail();
+        }else {
+            User user1 = (User)list.get(0);
+            List<Menu> menuList = menuService.lambdaQuery().like(Menu::getMenuright, user1.getRoleId()).list();
+            HashMap res = new HashMap();
+            res.put("user", user1);
+            res.put("menu", menuList);
+            return Result.suc(res);
+        }
+    }
 
     @GetMapping("/list")
     public List<User> list() {
@@ -38,8 +62,8 @@ public class UserController {
 
     @PostMapping("/findByNo")
     public Result findByNo(@RequestParam String no) {
-        List list = userService.lambdaQuery().eq(User::getNo, no).list();
-        return list.size()>0 ? Result.suc(list) : Result.fail();
+        List<User> list = userService.lambdaQuery().eq(User::getNo, no).list();
+        return !list.isEmpty() ? Result.suc(list) : Result.fail();
     }
     //增
     @PostMapping("/save")
@@ -70,6 +94,7 @@ public class UserController {
         HashMap param = query.getParam();
         String name = (String) param.get("name");
         String sex = String.valueOf(param.get("sex"));
+        String roleId = String.valueOf(param.get("roleId"));
 
         Page<User> page = new Page<>();
         page.setCurrent(query.getPageNum());
@@ -81,6 +106,9 @@ public class UserController {
         }
         if(StringUtils.isNotBlank(sex) && !sex.equals("null")){
             lambdaqueryWrapper.eq(User::getSex,sex);
+        }
+        if(StringUtils.isNotBlank(roleId) && !roleId.equals("null")){
+            lambdaqueryWrapper.eq(User::getRoleId,roleId);
         }
        // IPage result = userService.pageC(page);
         IPage result = userService.pageCC(page,lambdaqueryWrapper);

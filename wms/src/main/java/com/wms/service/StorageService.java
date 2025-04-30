@@ -2,8 +2,9 @@ package com.wms.service;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.wms.entity.User;
+import com.wms.entity.Storage;
 import com.baomidou.mybatisplus.extension.service.IService;
+
 
 /**
  * <p>
@@ -11,11 +12,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author zzq
- * @since 2025-04-22
+ * @since 2025-04-29
  */
-public interface UserService extends IService<User> {
+public interface StorageService extends IService<Storage> {
 
-    IPage pageC(IPage<User> page);
-
-    IPage pageCC(IPage<User> page, Wrapper wrapper);
+    IPage pageCC(IPage<Storage> page, Wrapper wrapper);
 }
