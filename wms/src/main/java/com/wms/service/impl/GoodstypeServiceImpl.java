@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zzq
@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 public class GoodstypeServiceImpl extends ServiceImpl<GoodstypeMapper, Goodstype> implements GoodstypeService {
     @Resource
     private GoodstypeMapper goodstypeMapper;
+
     @Override
     public IPage pageCC(IPage<Goodstype> page, Wrapper wrapper) {
         return goodstypeMapper.pageCC(page, wrapper);

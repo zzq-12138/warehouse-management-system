@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zzq
@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 public class RecordServiceImpl extends ServiceImpl<RecordMapper, Record> implements RecordService {
     @Resource
     private RecordMapper recordMapper;
+
     @Override
     public IPage pageCC(IPage<Record> page, Wrapper wrapper) {
         return recordMapper.pageCC(page, wrapper);

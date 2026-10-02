@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author zzq
@@ -39,7 +39,7 @@ public class StorageController {
     //删
     @GetMapping("/delete")
     public Result delete(String id) {
-        return storageService.removeById(id)?Result.suc() : Result.fail();
+        return storageService.removeById(id) ? Result.suc() : Result.fail();
     }
 
     // 更新
@@ -60,17 +60,17 @@ public class StorageController {
         page.setSize(query.getPageSize());
 
         LambdaQueryWrapper<Storage> lambdaqueryWrapper = new LambdaQueryWrapper<>();
-        if(StringUtils.isNotBlank(name) && !name.equals("null")){
-            lambdaqueryWrapper.like(Storage::getName,name);
+        if (StringUtils.isNotBlank(name) && !name.equals("null")) {
+            lambdaqueryWrapper.like(Storage::getName, name);
         }
 
         // IPage result = StorageService.pageC(page);
-        IPage result = storageService.pageCC(page,lambdaqueryWrapper);
+        IPage result = storageService.pageCC(page, lambdaqueryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());
     }
 
     @GetMapping("/list")
-    public Result list(){
+    public Result list() {
         List<Storage> list = storageService.list();
         return Result.suc(list);
     }

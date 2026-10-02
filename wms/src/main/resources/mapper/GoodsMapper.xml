@@ -3,18 +3,18 @@
 <mapper namespace="com.wms.mapper.GoodsMapper">
     <select id="pageCC" resultType="com.wms.entity.Goods">
         SELECT
-            *
+        *
         FROM
-            goods ${ew.customSqlSegment}
+        goods ${ew.customSqlSegment}
     </select>
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.wms.entity.Goods">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="storage" property="storage" />
-        <result column="goodsType" property="goodstype" />
-        <result column="count" property="count" />
-        <result column="remark" property="remark" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="storage" property="storage"/>
+        <result column="goodsType" property="goodstype"/>
+        <result column="count" property="count"/>
+        <result column="remark" property="remark"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

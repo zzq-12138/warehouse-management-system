@@ -45,8 +45,8 @@ public class UserController {
 
         if (list.isEmpty()) {
             return Result.fail();
-        }else {
-            User user1 = (User)list.get(0);
+        } else {
+            User user1 = (User) list.get(0);
             List<Menu> menuList = menuService.lambdaQuery().like(Menu::getMenuright, user1.getRoleId()).list();
             HashMap res = new HashMap();
             res.put("user", user1);
@@ -65,6 +65,7 @@ public class UserController {
         List<User> list = userService.lambdaQuery().eq(User::getNo, no).list();
         return !list.isEmpty() ? Result.suc(list) : Result.fail();
     }
+
     //增
     @PostMapping("/save")
     public Result save(@RequestBody User user) {
@@ -74,7 +75,7 @@ public class UserController {
     //删
     @GetMapping("/delete")
     public Result delete(String id) {
-        return userService.removeById(id)?Result.suc() : Result.fail();
+        return userService.removeById(id) ? Result.suc() : Result.fail();
     }
 
     // 更新
@@ -82,6 +83,7 @@ public class UserController {
     public Result update(@RequestBody User user) {
         return userService.updateById(user) ? Result.suc() : Result.fail();
     }
+
     //改
     @PostMapping("/mod")
     public boolean mod(@RequestBody User user) {
@@ -101,17 +103,17 @@ public class UserController {
         page.setSize(query.getPageSize());
 
         LambdaQueryWrapper<User> lambdaqueryWrapper = new LambdaQueryWrapper<>();
-        if(StringUtils.isNotBlank(name) && !name.equals("null")){
-            lambdaqueryWrapper.like(User::getName,name);
+        if (StringUtils.isNotBlank(name) && !name.equals("null")) {
+            lambdaqueryWrapper.like(User::getName, name);
         }
-        if(StringUtils.isNotBlank(sex) && !sex.equals("null")){
-            lambdaqueryWrapper.eq(User::getSex,sex);
+        if (StringUtils.isNotBlank(sex) && !sex.equals("null")) {
+            lambdaqueryWrapper.eq(User::getSex, sex);
         }
-        if(StringUtils.isNotBlank(roleId) && !roleId.equals("null")){
-            lambdaqueryWrapper.eq(User::getRoleId,roleId);
+        if (StringUtils.isNotBlank(roleId) && !roleId.equals("null")) {
+            lambdaqueryWrapper.eq(User::getRoleId, roleId);
         }
-       // IPage result = userService.pageC(page);
-        IPage result = userService.pageCC(page,lambdaqueryWrapper);
+        // IPage result = userService.pageC(page);
+        IPage result = userService.pageCC(page, lambdaqueryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());
     }
 }

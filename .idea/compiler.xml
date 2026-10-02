@@ -13,10 +13,8 @@
         <module name="wms" />
       </profile>
     </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="wms" options="-parameters" />
-    </option>
+    <bytecodeTargetLevel>
+      <module name="Inventory" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

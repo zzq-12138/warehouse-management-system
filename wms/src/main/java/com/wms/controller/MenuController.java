@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author zzq
@@ -27,8 +27,9 @@ public class MenuController {
 
     @Autowired
     private MenuService menuService;
+
     @GetMapping("/list")
-    public Result list(@RequestParam String roleId){
+    public Result list(@RequestParam String roleId) {
         List<Menu> list = menuService.lambdaQuery().like(Menu::getMenuright, roleId).list();
         return Result.suc(list);
     }

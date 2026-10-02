@@ -3,15 +3,15 @@
 <mapper namespace="com.wms.mapper.GoodstypeMapper">
     <select id="pageCC" resultType="com.wms.entity.Goodstype">
         SELECT
-            *
+        *
         FROM
-            goodstype ${ew.customSqlSegment}
+        goodstype ${ew.customSqlSegment}
     </select>
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.wms.entity.Goodstype">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="remark" property="remark" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="remark" property="remark"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->

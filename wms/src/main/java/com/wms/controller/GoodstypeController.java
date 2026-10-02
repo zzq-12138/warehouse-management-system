@@ -19,7 +19,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author zzq
@@ -41,7 +41,7 @@ public class GoodstypeController {
     //删
     @GetMapping("/delete")
     public Result delete(String id) {
-        return goodstypeService.removeById(id)?Result.suc() : Result.fail();
+        return goodstypeService.removeById(id) ? Result.suc() : Result.fail();
     }
 
     // 更新
@@ -62,17 +62,17 @@ public class GoodstypeController {
         page.setSize(query.getPageSize());
 
         LambdaQueryWrapper<Goodstype> lambdaqueryWrapper = new LambdaQueryWrapper<>();
-        if(StringUtils.isNotBlank(name) && !name.equals("null")){
-            lambdaqueryWrapper.like(Goodstype::getName,name);
+        if (StringUtils.isNotBlank(name) && !name.equals("null")) {
+            lambdaqueryWrapper.like(Goodstype::getName, name);
         }
 
         // IPage result = GoodstypeService.pageC(page);
-        IPage result = goodstypeService.pageCC(page,lambdaqueryWrapper);
+        IPage result = goodstypeService.pageCC(page, lambdaqueryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());
     }
 
     @GetMapping("/list")
-    public Result list(){
+    public Result list() {
         List<Goodstype> list = goodstypeService.list();
         return Result.suc(list);
     }

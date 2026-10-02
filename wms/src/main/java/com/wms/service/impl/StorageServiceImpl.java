@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zzq
@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 public class StorageServiceImpl extends ServiceImpl<StorageMapper, Storage> implements StorageService {
     @Resource
     private StorageMapper storageMapper;
+
     @Override
     public IPage pageCC(IPage<Storage> page, Wrapper wrapper) {
         return storageMapper.pageCC(page, wrapper);

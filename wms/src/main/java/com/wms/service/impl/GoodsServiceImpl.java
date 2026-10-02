@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zzq
@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class GoodsServiceImpl extends ServiceImpl<GoodsMapper, Goods> implements GoodsService {
     @Resource
     private GoodsMapper goodsMapper;
+
     @Override
     public IPage pageCC(IPage<Goods> page, Wrapper wrapper) {
         return goodsMapper.pageCC(page, wrapper);

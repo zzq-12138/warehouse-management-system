@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zzq
@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
     @Resource
     private UserMapper userMapper;
+
     @Override
     public IPage pageC(IPage<User> page) {
         return userMapper.pageC(page);

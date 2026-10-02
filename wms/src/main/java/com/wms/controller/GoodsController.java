@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author zzq
@@ -39,7 +39,7 @@ public class GoodsController {
     //删
     @GetMapping("/delete")
     public Result delete(String id) {
-        return goodsService.removeById(id)?Result.suc() : Result.fail();
+        return goodsService.removeById(id) ? Result.suc() : Result.fail();
     }
 
     // 更新
@@ -62,17 +62,17 @@ public class GoodsController {
         page.setSize(query.getPageSize());
 
         LambdaQueryWrapper<Goods> lambdaqueryWrapper = new LambdaQueryWrapper<>();
-        if(StringUtils.isNotBlank(name) && !name.equals("null")){
-            lambdaqueryWrapper.like(Goods::getName,name);
+        if (StringUtils.isNotBlank(name) && !name.equals("null")) {
+            lambdaqueryWrapper.like(Goods::getName, name);
         }
-        if(StringUtils.isNotBlank(storage) && !storage.equals("null")){
-            lambdaqueryWrapper.eq(Goods::getStorage,storage);
+        if (StringUtils.isNotBlank(storage) && !storage.equals("null")) {
+            lambdaqueryWrapper.eq(Goods::getStorage, storage);
         }
-        if(StringUtils.isNotBlank(goodstype) && !goodstype.equals("null")){
-            lambdaqueryWrapper.like(Goods::getGoodstype,goodstype);
+        if (StringUtils.isNotBlank(goodstype) && !goodstype.equals("null")) {
+            lambdaqueryWrapper.like(Goods::getGoodstype, goodstype);
         }
         // IPage result = GoodsService.pageC(page);
-        IPage result = goodsService.pageCC(page,lambdaqueryWrapper);
+        IPage result = goodsService.pageCC(page, lambdaqueryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());
     }
 

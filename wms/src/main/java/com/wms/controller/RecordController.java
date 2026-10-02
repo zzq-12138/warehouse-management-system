@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author zzq
@@ -37,6 +37,7 @@ public class RecordController {
     private RecordService recordService;
     @Autowired
     private GoodsService goodsService;
+
     // 查
     @PostMapping("/listPage")
     public Result listPage(@RequestBody QueryPageParam query) {
@@ -55,34 +56,35 @@ public class RecordController {
         QueryWrapper<Record> queryWrapper = new QueryWrapper<>();
         queryWrapper.apply(" a.goods=b.id and b.storage=c.id and b.goodsType=d.id ");
 
-        if(roleId.equals("2")){
-            queryWrapper.apply(" a.userId = "+userId);
+        if (roleId.equals("2")) {
+            queryWrapper.apply(" a.userId = " + userId);
         }
 
-        if(StringUtils.isNotBlank(name) && !name.equals("null")){
-            queryWrapper.like("b.name",name);
+        if (StringUtils.isNotBlank(name) && !name.equals("null")) {
+            queryWrapper.like("b.name", name);
         }
-        if(StringUtils.isNotBlank(storage) && !storage.equals("null")){
-            queryWrapper.eq("c.id",storage);
+        if (StringUtils.isNotBlank(storage) && !storage.equals("null")) {
+            queryWrapper.eq("c.id", storage);
         }
-        if(StringUtils.isNotBlank(goodstype) && !goodstype.equals("null")){
-            queryWrapper.eq("d.id",goodstype);
+        if (StringUtils.isNotBlank(goodstype) && !goodstype.equals("null")) {
+            queryWrapper.eq("d.id", goodstype);
         }
         // IPage result = GoodsService.pageC(page);
-        IPage<Record> result = recordService.pageCC(page,queryWrapper);
+        IPage<Record> result = recordService.pageCC(page, queryWrapper);
         return Result.suc(result.getRecords(), result.getTotal());
     }
+
     //增
     @PostMapping("/save")
     public Result save(@RequestBody Record record) {
-        Goods goods =  goodsService.getById(record.getGoods());
+        Goods goods = goodsService.getById(record.getGoods());
         int count = record.getCount();
-        if (record.getAction().equals("2")){
+        if (record.getAction().equals("2")) {
             count = -count;
             record.setCount(count);
         }
         int num = goods.getCount() + count;
-        if (num < 0){
+        if (num < 0) {
             return Result.fail();
         }
         goods.setCount(num);

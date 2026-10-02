@@ -3,6 +3,7 @@ package com.wms.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -13,7 +14,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author zzq
@@ -21,7 +22,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="User对象", description="")
+@ApiModel(value = "User对象", description = "")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
